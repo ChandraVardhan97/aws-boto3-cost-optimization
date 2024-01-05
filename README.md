@@ -15,3 +15,4 @@ The Lambda function fetches all EBS snapshots owned by the same account ('self')
 2. Before testing the function, increase the Lambda function timeout to 10 secs from the default 3 secs.
 3. Also, provide the necessary permissions like DeleteSnapshot, DescribeSnapshot, DescribeInstances and DescibeVolumes to the default Lambda role.
 4. Test the Lambda function. Here ,we are manually triggering the function. We can also setup a event in CloudWatch and trigger this Lambda function based on a CRON expression.
+5. Also, the code can be modified to only delete the volumes beyond a certain expiration date. This can be achieved by using the if condition.
