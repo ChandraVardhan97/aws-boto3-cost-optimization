@@ -1,3 +1,15 @@
 import boto3
-client = boto3.client('s3')
 
+def lambda_handler(event, context):
+    ec2 = boto3.client('ec2')
+
+    # Fetch all the EBS snapshots
+    response = ec2.describe_snapshots(OwnerIds=['self'])
+
+    # Fetch all the active EC2 Instance IDs
+    instances_response = ec2.describe_instances(Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
+    active_instance_ids = set()
+
+    for reservation in instances_response['Reservations']:
+        for instance in reservation['Instances']:
+            active_instance_ids.add(instance['InstanceId'])
