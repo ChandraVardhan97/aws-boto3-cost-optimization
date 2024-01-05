@@ -14,4 +14,4 @@ The Lambda function fetches all EBS snapshots owned by the same account ('self')
 1. Create a Lambda function. Copy the Boto3.py code and add it to the function body.
 2. Before testing the function, increase the Lambda function timeout to 10 secs from the default 3 secs.
 3. Also, provide the necessary permissions like DeleteSnapshot, DescribeSnapshot, DescribeInstances and DescibeVolumes to the default Lambda role.
-4. The the Lambda function.
+4. Test the Lambda function. Here ,we are manually triggering the function. We can also setup a event in CloudWatch and trigger this Lambda function based on a CRON expression.
